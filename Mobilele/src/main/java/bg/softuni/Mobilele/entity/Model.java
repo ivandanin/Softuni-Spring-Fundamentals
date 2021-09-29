@@ -1,27 +1,35 @@
 package bg.softuni.Mobilele.entity;
 
+import bg.softuni.Mobilele.entity.enums.CategoryEnum;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "models")
 public class Model extends BaseEntity {
 
+    @Column(nullable = false)
+    private String name;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Category category;
+    private CategoryEnum category;
+
     @Column(nullable = false)
     private String imageUrl;
+
+    @Column(nullable = false)
     private Integer startYear;
     private Integer endYear;
 
     @ManyToOne
     private Brand brand;
 
-    public Category getCategory() {
+    public CategoryEnum getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(CategoryEnum category) {
         this.category = category;
     }
 

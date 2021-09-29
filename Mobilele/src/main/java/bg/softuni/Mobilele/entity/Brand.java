@@ -16,12 +16,10 @@ public class Brand extends BaseEntity{
     @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL)
     private List<Model> models;
 
-    @Override
     public String getName() {
         return name;
     }
 
-    @Override
     public void setName(String name) {
         this.name = name;
     }

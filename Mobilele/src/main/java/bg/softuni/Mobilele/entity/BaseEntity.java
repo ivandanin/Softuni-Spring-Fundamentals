@@ -11,8 +11,6 @@ public abstract class BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-
     @Column(nullable = false)
     private Instant created;
     private Instant modified;
@@ -23,14 +21,6 @@ public abstract class BaseEntity {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Instant getCreated() {
