@@ -1,4 +1,4 @@
-package bg.softuni.Mobilele;
+package bg.softuni.Mobilele.init;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

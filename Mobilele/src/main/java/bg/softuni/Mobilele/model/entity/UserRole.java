@@ -1,9 +1,8 @@
-package bg.softuni.Mobilele.entity;
+package bg.softuni.Mobilele.model.entity;
 
-import bg.softuni.Mobilele.entity.enums.RoleEnum;
+import bg.softuni.Mobilele.model.entity.enums.RoleEnum;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "roles")

@@ -1,6 +1,6 @@
-package bg.softuni.Mobilele.entity;
+package bg.softuni.Mobilele.model.entity;
 
-import bg.softuni.Mobilele.entity.enums.CategoryEnum;
+import bg.softuni.Mobilele.model.entity.enums.CategoryEnum;
 
 import javax.persistence.*;
 

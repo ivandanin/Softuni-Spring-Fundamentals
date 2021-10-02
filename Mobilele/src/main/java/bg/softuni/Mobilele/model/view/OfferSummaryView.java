@@ -1,102 +1,89 @@
-package bg.softuni.Mobilele.entity;
+package bg.softuni.Mobilele.model.view;
 
-import bg.softuni.Mobilele.entity.enums.EngineEnum;
-import bg.softuni.Mobilele.entity.enums.TransmissionEnum;
-
-import javax.persistence.*;
+import bg.softuni.Mobilele.model.entity.enums.EngineEnum;
+import bg.softuni.Mobilele.model.entity.enums.TransmissionEnum;
 import java.math.BigDecimal;
 
-@Entity
-@Table(name = "offers")
-public class Offer extends BaseEntity {
+public class OfferSummaryView {
 
     private String description;
-
-    @Enumerated(EnumType.STRING)
     private EngineEnum engine;
     private String imageUrl;
     private int mileage;
     private BigDecimal price;
-
-    @Enumerated(EnumType.STRING)
     private TransmissionEnum transmission;
     private int year;
-
-    @ManyToOne
-    private Model model;
-
-    @ManyToOne
-    private User seller;
+    private String model;
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public OfferSummaryView setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public EngineEnum getEngine() {
         return engine;
     }
 
-    public void setEngine(EngineEnum engine) {
+    public OfferSummaryView setEngine(EngineEnum engine) {
         this.engine = engine;
+        return this;
     }
 
     public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
+    public OfferSummaryView setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
     }
 
     public int getMileage() {
         return mileage;
     }
 
-    public void setMileage(int mileage) {
+    public OfferSummaryView setMileage(int mileage) {
         this.mileage = mileage;
+        return this;
     }
 
     public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public OfferSummaryView setPrice(BigDecimal price) {
         this.price = price;
+        return this;
     }
 
     public TransmissionEnum getTransmission() {
         return transmission;
     }
 
-    public void setTransmission(TransmissionEnum transmission) {
+    public OfferSummaryView setTransmission(TransmissionEnum transmission) {
         this.transmission = transmission;
+        return this;
     }
 
     public int getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public OfferSummaryView setYear(int year) {
         this.year = year;
+        return this;
     }
 
-    public Model getModel() {
+    public String getModel() {
         return model;
     }
 
-    public void setModel(Model model) {
+    public OfferSummaryView setModel(String model) {
         this.model = model;
-    }
-
-    public User getSeller() {
-        return seller;
-    }
-
-    public void setSeller(User seller) {
-        this.seller = seller;
+        return this;
     }
 }
