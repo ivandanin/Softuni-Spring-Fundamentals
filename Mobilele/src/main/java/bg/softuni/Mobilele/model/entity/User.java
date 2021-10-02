@@ -14,7 +14,7 @@ public class User extends BaseEntity {
     private String lastName;
     private boolean isActive;
 
-    @OneToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<UserRole> roles;
 
 

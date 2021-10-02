@@ -20,8 +20,9 @@ public class Brand extends BaseEntity{
         return name;
     }
 
-    public void setName(String name) {
+    public Brand setName(String name) {
         this.name = name;
+        return this;
     }
 
     public List<Model> getModels() {

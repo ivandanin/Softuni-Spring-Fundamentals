@@ -31,6 +31,11 @@ public abstract class BaseEntity {
         this.created = created;
     }
 
+    @PrePersist
+    public void beforeCreate() {
+        this.created = Instant.now();
+    }
+
     public Instant getModified() {
         return modified;
     }
