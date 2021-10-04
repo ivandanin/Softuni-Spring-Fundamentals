@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -91,10 +90,11 @@ public class UserServiceImpl implements UserService {
 
             if (success) {
                 User loggedInUser = userOpt.get();
-                currentUser.setLoggedIn(true);
-                currentUser.setUsername(loggedInUser.getUsername());
-                currentUser.setFirstName(loggedInUser.getFirstName());
-                currentUser.setLastName(loggedInUser.getLastName());
+                currentUser.setLoggedIn(true)
+                        .setUsername(loggedInUser.getUsername())
+                        .setFirstName(loggedInUser.getFirstName())
+                        .setLastName(loggedInUser.getLastName());
+                
 
                 loggedInUser.getRoles().forEach(r -> currentUser.addRole(r.getRole()));
             }

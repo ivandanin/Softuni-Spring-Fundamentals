@@ -21,36 +21,41 @@ public class CurrentUser {
         return loggedIn;
     }
 
-    public void setLoggedIn(boolean loggedIn) {
+    public CurrentUser setLoggedIn(boolean loggedIn) {
         this.loggedIn = loggedIn;
+        return this;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public CurrentUser setFirstName(String firstName) {
         this.firstName = firstName;
+        return this;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public CurrentUser setLastName(String lastName) {
         this.lastName = lastName;
+        return this;
     }
 
     public Set<RoleEnum> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<RoleEnum> roles) {
+    public CurrentUser setRoles(Set<RoleEnum> roles) {
         this.roles = roles;
+        return this;
     }
 
-    public void setUsername(String username) {
+    public CurrentUser setUsername(String username) {
         this.username = username;
+        return this;
     }
 
     public String getUsername() {
