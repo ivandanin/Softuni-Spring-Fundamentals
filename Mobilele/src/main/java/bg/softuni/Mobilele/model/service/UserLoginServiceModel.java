@@ -3,7 +3,7 @@ package bg.softuni.Mobilele.model.service;
 public class UserLoginServiceModel {
 
     private String username;
-    private String password;
+    private String rawPassword;
 
     public String getUsername() {
         return username;
@@ -14,12 +14,12 @@ public class UserLoginServiceModel {
         return this;
     }
 
-    public String getPassword() {
-        return password;
+    public String getRawPassword() {
+        return rawPassword;
     }
 
-    public UserLoginServiceModel setPassword(String password) {
-        this.password = password;
+    public UserLoginServiceModel setRawPassword(String rawPassword) {
+        this.rawPassword = rawPassword;
         return this;
     }
 }

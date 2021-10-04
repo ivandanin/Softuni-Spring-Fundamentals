@@ -64,4 +64,12 @@ public class Model extends BaseEntity {
     public void setBrand(Brand brand) {
         this.brand = brand;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

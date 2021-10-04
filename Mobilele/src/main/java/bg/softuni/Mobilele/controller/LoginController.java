@@ -32,7 +32,7 @@ public class LoginController {
         boolean loginSuccessful = userService
                 .login(new UserLoginServiceModel()
                 .setUsername(userLoginBindingModel.getUsername())
-                .setPassword(userLoginBindingModel.getPassword()));
+                .setRawPassword(userLoginBindingModel.getPassword()));
 
         LOGGER.info("User tried to login. User with name {} tried to login. Success = {}?",
                 userLoginBindingModel.getUsername(), loginSuccessful);
