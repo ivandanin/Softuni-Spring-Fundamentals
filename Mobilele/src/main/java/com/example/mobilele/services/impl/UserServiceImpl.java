@@ -1,6 +1,7 @@
 package com.example.mobilele.services.impl;
 
 import com.example.mobilele.models.service.LoginServiceModel;
+import com.example.mobilele.models.service.RegistrationServiceModel;
 import com.example.mobilele.services.UserService;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +20,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public void logout() {
 
+    }
+
+    @Override
+    public void registerAndLoginUser(RegistrationServiceModel serviceModel) {
+
+    }
+
+    @Override
+    public boolean isUserNameFree(String username) {
+        return false;
     }
 }

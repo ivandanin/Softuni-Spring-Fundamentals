@@ -1,6 +1,7 @@
 package com.example.mobilele.services;
 
 import com.example.mobilele.models.service.LoginServiceModel;
+import com.example.mobilele.models.service.RegistrationServiceModel;
 
 public interface UserService {
     void initializeUsersAndRoles();
@@ -9,4 +10,7 @@ public interface UserService {
 
     void logout();
 
+    void registerAndLoginUser(RegistrationServiceModel serviceModel);
+
+    boolean isUserNameFree(String username);
 }
