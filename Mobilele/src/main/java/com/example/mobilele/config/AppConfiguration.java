@@ -1,4 +1,4 @@
-package com.example.mobilele;
+package com.example.mobilele.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
