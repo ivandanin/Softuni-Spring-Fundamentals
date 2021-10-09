@@ -3,9 +3,11 @@ package com.example.mobilele.models.entityModels;
 
 
 import com.example.mobilele.models.entityModels.enums.CategoryEnum;
+import com.example.mobilele.models.viewModels.OfferSummaryView;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "models")

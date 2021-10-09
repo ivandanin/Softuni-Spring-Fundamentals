@@ -1,55 +1,40 @@
-package com.example.mobilele.models.entityModels;
+package com.example.mobilele.models.viewModels;
 
-
-
+import com.example.mobilele.models.entityModels.Model;
+import com.example.mobilele.models.entityModels.UserEntity;
 import com.example.mobilele.models.entityModels.enums.TransmissionEnum;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.List;
 
-@Entity
-@Table(name = "offers")
-public class Offer {
+public class OfferDetailsView {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
     private LocalDateTime created;
     private LocalDateTime modified;
-
-    @Column(columnDefinition = "TEXT")
     private String description;
     private String imageUrl;
     private Integer mileage;
     private BigDecimal price;
-
-    @Enumerated(EnumType.STRING)
     private TransmissionEnum transmission;
     private Integer year;
+    private String model;
+    private String brand;
+    private String sellerFullName;
 
-    @ManyToOne
-    private Model model;
-
-    @ManyToOne
-    private UserEntity seller;
 
     public Long getId() {
         return id;
     }
 
-    public Offer setId(Long id) {
+    public OfferDetailsView setId(Long id) {
         this.id = id;
-        return this;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Offer setName(String name) {
-        this.name = name;
         return this;
     }
 
@@ -57,7 +42,7 @@ public class Offer {
         return created;
     }
 
-    public Offer setCreated(LocalDateTime created) {
+    public OfferDetailsView setCreated(LocalDateTime created) {
         this.created = created;
         return this;
     }
@@ -66,7 +51,7 @@ public class Offer {
         return modified;
     }
 
-    public Offer setModified(LocalDateTime modified) {
+    public OfferDetailsView setModified(LocalDateTime modified) {
         this.modified = modified;
         return this;
     }
@@ -75,7 +60,7 @@ public class Offer {
         return description;
     }
 
-    public Offer setDescription(String description) {
+    public OfferDetailsView setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -84,7 +69,7 @@ public class Offer {
         return imageUrl;
     }
 
-    public Offer setImageUrl(String imageUrl) {
+    public OfferDetailsView setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
         return this;
     }
@@ -93,7 +78,7 @@ public class Offer {
         return mileage;
     }
 
-    public Offer setMileage(Integer mileage) {
+    public OfferDetailsView setMileage(Integer mileage) {
         this.mileage = mileage;
         return this;
     }
@@ -102,7 +87,7 @@ public class Offer {
         return price;
     }
 
-    public Offer setPrice(BigDecimal price) {
+    public OfferDetailsView setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
@@ -111,7 +96,7 @@ public class Offer {
         return transmission;
     }
 
-    public Offer setTransmission(TransmissionEnum transmission) {
+    public OfferDetailsView setTransmission(TransmissionEnum transmission) {
         this.transmission = transmission;
         return this;
     }
@@ -120,26 +105,31 @@ public class Offer {
         return year;
     }
 
-    public Offer setYear(Integer year) {
+    public OfferDetailsView setYear(Integer year) {
         this.year = year;
         return this;
     }
 
-    public Model getModel() {
+    public String getModel() {
         return model;
     }
 
-    public Offer setModel(Model model) {
+    public OfferDetailsView setModel(String model) {
         this.model = model;
         return this;
     }
 
-    public UserEntity getSeller() {
-        return seller;
+    public String getBrand() {
+        return brand;
     }
 
-    public Offer setSeller(UserEntity seller) {
-        this.seller = seller;
+    public OfferDetailsView setBrand(String brand) {
+        this.brand = brand;
+        return this;
+    }
+
+    public OfferDetailsView setSellerFullName(String fullName) {
+        this.sellerFullName = fullName;
         return this;
     }
 }
