@@ -29,6 +29,7 @@ public class Model {
     @ManyToOne
     private Brand brand;
 
+
     public Long getId() {
         return id;
     }
@@ -100,4 +101,5 @@ public class Model {
     public void setBrand(Brand brand) {
         this.brand = brand;
     }
+
 }

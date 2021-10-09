@@ -3,24 +3,26 @@ package com.example.mobilele.models.viewModels;
 import com.example.mobilele.models.entityModels.enums.EngineEnum;
 import com.example.mobilele.models.entityModels.enums.TransmissionEnum;
 
+import java.math.BigDecimal;
+
 public class OfferSummaryView {
 
-    private long id;
+    private Long id;
     private String description;
     private EngineEnum engine;
     private String imageUrl;
-    private int mileage;
-    private int price;
+    private Integer mileage;
+    private BigDecimal price;
     private TransmissionEnum transmission;
-    private int year;
+    private Integer year;
     private String model;
     private String brand;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public OfferSummaryView setId(long id) {
+    public OfferSummaryView setId(Long id) {
         this.id = id;
         return this;
     }
@@ -52,20 +54,20 @@ public class OfferSummaryView {
         return this;
     }
 
-    public int getMileage() {
+    public Integer getMileage() {
         return mileage;
     }
 
-    public OfferSummaryView setMileage(int mileage) {
+    public OfferSummaryView setMileage(Integer mileage) {
         this.mileage = mileage;
         return this;
     }
 
-    public int getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public OfferSummaryView setPrice(int price) {
+    public OfferSummaryView setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }
@@ -79,11 +81,11 @@ public class OfferSummaryView {
         return this;
     }
 
-    public int getYear() {
+    public Integer getYear() {
         return year;
     }
 
-    public OfferSummaryView setYear(int year) {
+    public OfferSummaryView setYear(Integer year) {
         this.year = year;
         return this;
     }
