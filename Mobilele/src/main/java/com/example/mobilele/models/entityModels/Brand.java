@@ -1,4 +1,4 @@
-package com.example.mobilele.models.entities;
+package com.example.mobilele.models.entityModels;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

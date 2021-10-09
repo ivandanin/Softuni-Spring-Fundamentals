@@ -1,6 +1,6 @@
-package com.example.mobilele.user;
+package com.example.mobilele.util;
 
-import com.example.mobilele.models.entities.enums.RoleEnum;
+import com.example.mobilele.models.entityModels.enums.RoleEnum;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
@@ -60,5 +60,23 @@ public class CurrentUser {
     public CurrentUser setRoles(Set<RoleEnum> roles) {
         this.roles = roles;
         return this;
+    }
+
+
+    private CurrentUser clearRoles() {
+        roles.clear();
+        return this;
+    }
+
+    public boolean isAdmin() {
+        return roles.contains(RoleEnum.ADMIN);
+    }
+
+    public void clean() {
+        setLoggedIn(false)
+                .setUsername(null)
+                .setFirstName(null)
+                .setLastName(null)
+                .clearRoles();
     }
 }

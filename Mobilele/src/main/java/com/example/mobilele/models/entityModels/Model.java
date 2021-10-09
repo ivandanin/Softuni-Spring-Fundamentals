@@ -1,6 +1,8 @@
-package com.example.mobilele.models.entities;
+package com.example.mobilele.models.entityModels;
 
-import com.example.mobilele.models.entities.enums.CategoryEnum;
+
+
+import com.example.mobilele.models.entityModels.enums.CategoryEnum;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

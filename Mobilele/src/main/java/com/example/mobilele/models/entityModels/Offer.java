@@ -1,6 +1,8 @@
-package com.example.mobilele.models.entities;
+package com.example.mobilele.models.entityModels;
 
-import com.example.mobilele.models.entities.enums.TransmissionEnum;
+
+
+import com.example.mobilele.models.entityModels.enums.TransmissionEnum;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -31,5 +33,5 @@ public class Offer {
     private Model model;
 
     @ManyToOne
-    private User seller;
+    private UserEntity seller;
 }

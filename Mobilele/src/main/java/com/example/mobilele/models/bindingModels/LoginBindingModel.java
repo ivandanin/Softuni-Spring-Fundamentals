@@ -1,6 +1,6 @@
-package com.example.mobilele.models.service;
+package com.example.mobilele.models.bindingModels;
 
-public class LoginServiceModel {
+public class LoginBindingModel {
 
     private String username;
     private String password;
@@ -9,7 +9,7 @@ public class LoginServiceModel {
         return username;
     }
 
-    public LoginServiceModel setUsername(String username) {
+    public LoginBindingModel setUsername(String username) {
         this.username = username;
         return this;
     }
@@ -18,9 +18,8 @@ public class LoginServiceModel {
         return password;
     }
 
-    public LoginServiceModel setPassword(String password) {
+    public LoginBindingModel setPassword(String password) {
         this.password = password;
         return this;
-
     }
 }

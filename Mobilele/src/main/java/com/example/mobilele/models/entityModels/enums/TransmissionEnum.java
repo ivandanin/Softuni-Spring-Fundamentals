@@ -1,4 +1,4 @@
-package com.example.mobilele.models.entities.enums;
+package com.example.mobilele.models.entityModels.enums;
 
 public enum TransmissionEnum {
 

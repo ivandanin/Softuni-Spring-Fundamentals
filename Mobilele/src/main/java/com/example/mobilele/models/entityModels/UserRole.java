@@ -1,6 +1,8 @@
-package com.example.mobilele.models.entities;
+package com.example.mobilele.models.entityModels;
 
-import com.example.mobilele.models.entities.enums.RoleEnum;
+
+
+import com.example.mobilele.models.entityModels.enums.RoleEnum;
 
 import javax.persistence.*;
 

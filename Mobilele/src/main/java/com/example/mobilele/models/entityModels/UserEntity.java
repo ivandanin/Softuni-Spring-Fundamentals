@@ -1,6 +1,8 @@
-package com.example.mobilele.models.entities;
+package com.example.mobilele.models.entityModels;
 
-import com.example.mobilele.models.entities.enums.RoleEnum;
+
+
+import com.example.mobilele.models.entityModels.enums.RoleEnum;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -9,7 +11,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -116,5 +118,13 @@ public class User {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public Set<UserRole> getRoles() {
+        return roles;
+    }
+    public UserEntity setRoles(Set<UserRole> roles) {
+      this.roles = roles;
+      return this;
     }
 }
