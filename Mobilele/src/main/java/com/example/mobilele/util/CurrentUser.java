@@ -79,4 +79,8 @@ public class CurrentUser {
                 .setLastName(null)
                 .clearRoles();
     }
+
+    public void addRole(RoleEnum role) {
+
+    }
 }

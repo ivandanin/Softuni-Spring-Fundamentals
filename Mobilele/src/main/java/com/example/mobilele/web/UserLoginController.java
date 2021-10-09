@@ -28,7 +28,7 @@ public class UserLoginController {
     }
 
     @PostMapping("/login")
-    public String loginConfirm(LoginBindingModel loginBindingModel) {
+    public String login(LoginBindingModel loginBindingModel) {
 
         boolean loginSuccessful = userService.login(
                 new LoginServiceModel()
