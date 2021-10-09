@@ -98,7 +98,8 @@ public class UserEntityServiceImpl implements UserEntityService {
         }
     }
 
-    private void logout() {
+    @Override
+    public void logout() {
         currentUser.clean();
     }
 
@@ -120,7 +121,7 @@ public class UserEntityServiceImpl implements UserEntityService {
         newUser.setActive(true);
         newUser.setPassword(serviceModel.getPassword());
         newUser.setRoles(Set.of(userRole));
-        
+
         newUser = userRepo.save(newUser);
         login(newUser);
     }

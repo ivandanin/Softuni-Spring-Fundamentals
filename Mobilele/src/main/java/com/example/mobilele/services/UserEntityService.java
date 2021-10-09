@@ -11,4 +11,6 @@ public interface UserEntityService {
     boolean isUsernameFree(String username);
 
     void registerAndLogin(RegisterServiceModel serviceModel);
+
+    void logout();
 }
