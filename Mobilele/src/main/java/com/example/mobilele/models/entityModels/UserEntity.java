@@ -19,14 +19,15 @@ public class UserEntity {
     private String name;
     private LocalDateTime created;
     private LocalDateTime modified;
+
+    @Column(unique = true)
     private String username;
     private String password;
     private String firstName;
     private String lastName;
     private boolean isActive;
 
-    @Enumerated(EnumType.STRING)
-    private RoleEnum role;
+    @Column(columnDefinition = "TEXT")
     private String imageUrl;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -102,14 +103,6 @@ public class UserEntity {
 
     public void setActive(boolean active) {
         isActive = active;
-    }
-
-    public RoleEnum getRole() {
-        return role;
-    }
-
-    public void setRole(RoleEnum role) {
-        this.role = role;
     }
 
     public String getImageUrl() {

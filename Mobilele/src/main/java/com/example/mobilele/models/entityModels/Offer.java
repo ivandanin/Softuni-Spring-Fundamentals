@@ -2,6 +2,7 @@ package com.example.mobilele.models.entityModels;
 
 
 
+import com.example.mobilele.models.entityModels.enums.EngineEnum;
 import com.example.mobilele.models.entityModels.enums.TransmissionEnum;
 
 import javax.persistence.*;
@@ -21,9 +22,11 @@ public class Offer {
 
     @Column(columnDefinition = "TEXT")
     private String description;
+    @Column(columnDefinition = "TEXT")
     private String imageUrl;
     private Integer mileage;
     private BigDecimal price;
+    private EngineEnum engine;
 
     @Enumerated(EnumType.STRING)
     private TransmissionEnum transmission;
@@ -140,6 +143,15 @@ public class Offer {
 
     public Offer setSeller(UserEntity seller) {
         this.seller = seller;
+        return this;
+    }
+
+    public EngineEnum getEngine() {
+        return engine;
+    }
+
+    public Offer setEngine(EngineEnum engine) {
+        this.engine = engine;
         return this;
     }
 }

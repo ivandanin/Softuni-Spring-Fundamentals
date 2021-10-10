@@ -23,7 +23,7 @@ public class DBInit implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) {
+    public void run(String... args) throws Exception {
         brandService.initializeBrand();
         modelService.initializeModels();
         userService.initializeUsersAndRoles();

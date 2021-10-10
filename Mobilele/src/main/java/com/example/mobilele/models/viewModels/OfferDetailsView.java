@@ -1,24 +1,20 @@
 package com.example.mobilele.models.viewModels;
 
-import com.example.mobilele.models.entityModels.Model;
-import com.example.mobilele.models.entityModels.UserEntity;
+import com.example.mobilele.models.entityModels.enums.EngineEnum;
 import com.example.mobilele.models.entityModels.enums.TransmissionEnum;
 
 import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class OfferDetailsView {
 
     private Long id;
     private LocalDateTime created;
     private LocalDateTime modified;
+    private EngineEnum engine;
     private String description;
+    @Column(columnDefinition = "TEXT")
     private String imageUrl;
     private Integer mileage;
     private BigDecimal price;
@@ -28,6 +24,14 @@ public class OfferDetailsView {
     private String brand;
     private String sellerFullName;
 
+    public EngineEnum getEngine() {
+        return engine;
+    }
+
+    public OfferDetailsView setEngine(EngineEnum engine) {
+        this.engine = engine;
+        return this;
+    }
 
     public Long getId() {
         return id;
@@ -132,4 +136,9 @@ public class OfferDetailsView {
         this.sellerFullName = fullName;
         return this;
     }
+
+    public String getSellerFullName() {
+        return sellerFullName;
+    }
+
 }

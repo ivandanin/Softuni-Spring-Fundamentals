@@ -1,6 +1,8 @@
 package com.example.mobilele.services.impl;
 
 import com.example.mobilele.models.entityModels.Offer;
+import com.example.mobilele.models.entityModels.enums.EngineEnum;
+import com.example.mobilele.models.entityModels.enums.TransmissionEnum;
 import com.example.mobilele.models.viewModels.OfferDetailsView;
 import com.example.mobilele.models.viewModels.OfferSummaryView;
 import com.example.mobilele.repos.ModelRepo;
@@ -11,6 +13,7 @@ import com.example.mobilele.services.OfferService;
 import org.modelmapper.ModelMapper;
 
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,6 +32,37 @@ public class OfferServiceImpl implements OfferService {
         this.userRepo = userRepo;
     }
 
+    @Override
+    public void initializeOffers() {
+
+        if (offerRepo.count() == 0) {
+        Offer offer1 = new Offer();
+        offer1
+                .setModel(modelRepo.findById(1L).orElse(null))
+                .setEngine(EngineEnum.GASOLINE)
+                .setTransmission(TransmissionEnum.AUTOMATIC)
+                .setMileage(15000)
+                .setPrice(new BigDecimal(25000))
+                .setYear(2016)
+                .setDescription("KA4wa6 se i kara6!!!")
+                .setSeller(userRepo.findByUsername("pesho").orElse(null))
+                .setImageUrl("https://www.autoevolution.com/news/2020-ford-fiesta-rs-probably-confirmed-by-broad-grin-125727.html#agal_0");
+
+        Offer offer2 = new Offer();
+        offer2
+                .setModel(modelRepo.findById(1L).orElse(null))
+                .setEngine(EngineEnum.GASOLINE)
+                .setTransmission(TransmissionEnum.MANUAL)
+                .setMileage(1500000)
+                .setPrice(new BigDecimal(65000))
+                .setYear(1993)
+                .setDescription("UNIKAT!!!")
+                .setSeller(userRepo.findByUsername("admin").orElse(null))
+                .setImageUrl("https://en.wikipedia.org/wiki/Ford_Escort_RS_Cosworth#/media/File:1996_Ford_Escort_RS_Cosworth_2.0_Front.jpg");
+
+        offerRepo.saveAll(List.of(offer1, offer2));
+;        }
+    }
 
     @Override
     public List<OfferSummaryView> getAllOffers() {

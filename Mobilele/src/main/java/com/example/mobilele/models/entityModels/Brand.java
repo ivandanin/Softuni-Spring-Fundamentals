@@ -2,6 +2,7 @@ package com.example.mobilele.models.entityModels;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "brands")
@@ -13,6 +14,18 @@ public class Brand {
     private String name;
     private LocalDateTime created;
     private LocalDateTime modified;
+
+    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL)
+    private List<Model> models;
+
+    public List<Model> getModels() {
+        return models;
+    }
+
+    public Brand setModels(List<Model> models) {
+        this.models = models;
+        return this;
+    }
 
     public Long getId() {
         return id;

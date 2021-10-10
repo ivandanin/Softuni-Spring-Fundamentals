@@ -80,7 +80,8 @@ public class CurrentUser {
                 .clearRoles();
     }
 
-    public void addRole(RoleEnum role) {
-
+    public CurrentUser addRole(RoleEnum role) {
+        roles.add(role);
+        return this;
     }
 }

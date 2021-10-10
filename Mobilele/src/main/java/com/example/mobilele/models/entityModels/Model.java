@@ -16,13 +16,16 @@ public class Model {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String name;
     private LocalDateTime created;
     private LocalDateTime modified;
 
     @Enumerated(EnumType.STRING)
     private CategoryEnum category;
+    @Column(columnDefinition = "TEXT")
     private String imageUrl;
+    @Column(nullable = false)
     private Integer startYear;
     private Integer endYear;
 
@@ -34,72 +37,80 @@ public class Model {
         return id;
     }
 
-    public void setId(Long id) {
+    public Model setId(Long id) {
         this.id = id;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public Model setName(String name) {
         this.name = name;
+        return this;
     }
 
     public LocalDateTime getCreated() {
         return created;
     }
 
-    public void setCreated(LocalDateTime created) {
+    public Model setCreated(LocalDateTime created) {
         this.created = created;
+        return this;
     }
 
     public LocalDateTime getModified() {
         return modified;
     }
 
-    public void setModified(LocalDateTime modified) {
+    public Model setModified(LocalDateTime modified) {
         this.modified = modified;
+        return this;
     }
 
     public CategoryEnum getCategory() {
         return category;
     }
 
-    public void setCategory(CategoryEnum category) {
+    public Model setCategory(CategoryEnum category) {
         this.category = category;
+        return this;
     }
 
     public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
+    public Model setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
     }
 
     public Integer getStartYear() {
         return startYear;
     }
 
-    public void setStartYear(Integer startYear) {
+    public Model setStartYear(Integer startYear) {
         this.startYear = startYear;
+        return this;
     }
 
     public Integer getEndYear() {
         return endYear;
     }
 
-    public void setEndYear(Integer endYear) {
+    public Model setEndYear(Integer endYear) {
         this.endYear = endYear;
+        return this;
     }
 
     public Brand getBrand() {
         return brand;
     }
 
-    public void setBrand(Brand brand) {
+    public Model setBrand(Brand brand) {
         this.brand = brand;
+        return this;
     }
-
 }

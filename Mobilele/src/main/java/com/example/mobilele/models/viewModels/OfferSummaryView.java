@@ -3,6 +3,7 @@ package com.example.mobilele.models.viewModels;
 import com.example.mobilele.models.entityModels.enums.EngineEnum;
 import com.example.mobilele.models.entityModels.enums.TransmissionEnum;
 
+import javax.persistence.Column;
 import java.math.BigDecimal;
 
 public class OfferSummaryView {
@@ -10,6 +11,7 @@ public class OfferSummaryView {
     private Long id;
     private String description;
     private EngineEnum engine;
+    @Column(columnDefinition = "TEXT")
     private String imageUrl;
     private Integer mileage;
     private BigDecimal price;

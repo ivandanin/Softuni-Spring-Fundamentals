@@ -13,6 +13,8 @@ public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Enumerated(EnumType.STRING)
     private RoleEnum role;
 
     public Long getId() {
