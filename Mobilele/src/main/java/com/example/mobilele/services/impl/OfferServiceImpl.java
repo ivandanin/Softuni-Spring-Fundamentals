@@ -3,6 +3,7 @@ package com.example.mobilele.services.impl;
 import com.example.mobilele.models.entityModels.Offer;
 import com.example.mobilele.models.entityModels.enums.EngineEnum;
 import com.example.mobilele.models.entityModels.enums.TransmissionEnum;
+import com.example.mobilele.models.serviceModels.OfferUpdateServiceModel;
 import com.example.mobilele.models.viewModels.OfferDetailsView;
 import com.example.mobilele.models.viewModels.OfferSummaryView;
 import com.example.mobilele.repos.ModelRepo;
@@ -11,6 +12,7 @@ import com.example.mobilele.repos.UserEntityRepo;
 import org.springframework.stereotype.Service;
 import com.example.mobilele.services.OfferService;
 import org.modelmapper.ModelMapper;
+import com.example.mobilele.web.exception.ObjectNotFoundException;
 
 
 import java.math.BigDecimal;
@@ -70,6 +72,28 @@ public class OfferServiceImpl implements OfferService {
                 .stream()
                 .map(this::map)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void deleteOffer(Long id) {
+        offerRepo.deleteById(id);
+    }
+
+    @Override
+    public void updateOffer(OfferUpdateServiceModel offerModel) {
+
+        Offer offer = offerRepo.findById(offerModel.getId()).orElseThrow(() ->
+                new ObjectNotFoundException("Offer with id " + offerModel.getId() + " not found!"));
+
+        offer.setPrice(offerModel.getPrice())
+                .setDescription(offerModel.getDescription())
+                .setEngine(offerModel.getEngine())
+                .setImageUrl(offerModel.getImageUrl())
+                .setMileage(offerModel.getMileage())
+                .setTransmission(offerModel.getTransmission())
+                .setYear(offerModel.getYear());
+
+        offerRepo.save(offer);
     }
 
     @Override

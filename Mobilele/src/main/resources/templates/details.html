@@ -35,11 +35,16 @@
                 </li>
             </ul>
             <div class="card-body">
-                <a class="card-link" href="/">Update</a>
-                <a class="card-link" href="/">Delete</a>
+                <div class="row">
+                    <a class="btn btn-link" th:href="@{/offers/{id}/edit(id=*{id})}">Update</a>
+
+                    <form th:action="@{/offers/{id}(id=*{id})}" th:method="delete">
+                        <input type="submit" class="btn btn-link" value="Delete">
+                    </form>
+                </div>
             </div>
         </div>
-        <div th:each="o : ${offer}" th:object="${o}"
+        <div th:object="${offer}"
              class="offer card col-sm-2 col-md-3  col-lg-4 m-1 p-0">
             <img class="card-img-top" th:src="*{getImageUrl()}" alt="Car image">
         </div>
