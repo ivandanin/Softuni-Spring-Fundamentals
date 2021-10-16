@@ -17,7 +17,6 @@ import javax.validation.Valid;
 
 
 @Controller
-@RequestMapping("/offers")
 public class OffersController {
 
     private final OfferService offerService;
@@ -29,51 +28,51 @@ public class OffersController {
         this.modelMapper = modelMapper;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/offers/all")
     public String allOffers(Model model) {
         model.addAttribute("offers",
                 offerService.getAllOffers());
         return "offers";
     }
 
-    @GetMapping("/{id}/details")
+    @GetMapping("/offers/{id}/details")
     public String showOffer(@PathVariable Long id, Model model) {
         model.addAttribute("offer", this.offerService.findById(id));
         return "details";
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/offers/{id}")
     public String deleteOffer(@PathVariable Long id) {
         offerService.deleteOffer(id);
         return "redirect:/offers/all";
     }
 
-    @GetMapping("/{id}/edit")
-    public String update(@PathVariable Long id, Model model) {
+    @GetMapping("/offers/{id}/edit")
+    public String editOffer(@PathVariable Long id, Model model) {
         OfferDetailsView offerDetailsView = offerService.findById(id);
-        OfferUpdateBindingModel offerUpdateBindingModel = modelMapper
+        OfferUpdateBindingModel offerModel = modelMapper
                 .map(offerDetailsView, OfferUpdateBindingModel.class);
 
         model.addAttribute("engines", EngineEnum.values());
         model.addAttribute("transmissions", TransmissionEnum.values());
-        model.addAttribute("offerModel", offerUpdateBindingModel);
+        model.addAttribute("offerModel", offerModel);
         return "update";
     }
 
-    @PatchMapping("/{id}/edit")
-    public String update(@PathVariable Long id,
-                         @Valid OfferUpdateBindingModel offerUpdateBindingModel,
+    @PatchMapping("/offers/{id}/edit")
+    public String editOffer(@PathVariable Long id,
+                         @Valid OfferUpdateBindingModel offerModel,
                          BindingResult bindingResult,
                          RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("offerModel", offerUpdateBindingModel);
+            redirectAttributes.addFlashAttribute("offerModel", offerModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.offerModel", bindingResult);
 
             return "redirect:/offers/" + id + "/edit/errors";
         }
 
-        OfferUpdateServiceModel serviceModel = modelMapper.map(offerUpdateBindingModel, OfferUpdateServiceModel.class);
+        OfferUpdateServiceModel serviceModel = modelMapper.map(offerModel, OfferUpdateServiceModel.class);
         serviceModel.setId(id);
 
         offerService.updateOffer(serviceModel);
@@ -81,8 +80,8 @@ public class OffersController {
         return "redirect:/offers/" + id + "/details";
     }
 
-    @GetMapping("/{id}/edit/errors")
-    public String updateErrors(@PathVariable Long id, Model model) {
+    @GetMapping("/offers/{id}/edit/errors")
+    public String editOfferErrors(@PathVariable Long id, Model model) {
         model.addAttribute("engines", EngineEnum.values());
         model.addAttribute("transmissions", TransmissionEnum.values());
         return "update";
