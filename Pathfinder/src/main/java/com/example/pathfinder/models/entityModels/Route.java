@@ -33,6 +33,18 @@ public class Route {
     @ManyToMany
     private Set<Category> categories;
 
+    @OneToMany(mappedBy = "route")
+    private Set<Picture> pictures;
+
+    public Set<Picture> getPictures() {
+        return pictures;
+    }
+
+    public Route setPictures(Set<Picture> pictures) {
+        this.pictures = pictures;
+        return this;
+    }
+
     public String getDescription() {
         return description;
     }

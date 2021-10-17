@@ -1,8 +1,18 @@
 package com.example.pathfinder.services;
 
-import com.example.pathfinder.models.serviceModels.LoginServiceModel;
+import com.example.pathfinder.models.serviceModels.UserServiceModel;
 
 public interface UserService {
 
-    boolean login(LoginServiceModel loginServiceModel);
+    void login(Long id, String username);
+
+    void register(UserServiceModel map);
+
+    void logout();
+
+    UserServiceModel findUserByUsernameAndPassword(String username, String password);
+
+    UserServiceModel findById(Long id);
+
+    boolean doesExist(String username);
 }

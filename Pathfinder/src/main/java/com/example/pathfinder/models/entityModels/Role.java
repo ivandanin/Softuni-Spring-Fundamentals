@@ -1,6 +1,7 @@
 package com.example.pathfinder.models.entityModels;
 
 import com.example.pathfinder.models.entityModels.enums.LevelEnum;
+import com.example.pathfinder.models.entityModels.enums.RoleEnum;
 
 import javax.persistence.*;
 
@@ -13,7 +14,7 @@ public class Role {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private LevelEnum name;
+    private RoleEnum name;
 
     public Long getId() {
         return id;
@@ -24,11 +25,11 @@ public class Role {
         return this;
     }
 
-    public LevelEnum getName() {
+    public RoleEnum getName() {
         return name;
     }
 
-    public Role setName(LevelEnum name) {
+    public Role setName(RoleEnum name) {
         this.name = name;
         return this;
     }
