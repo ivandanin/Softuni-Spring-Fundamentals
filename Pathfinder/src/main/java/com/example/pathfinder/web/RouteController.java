@@ -1,15 +1,31 @@
 package com.example.pathfinder.web;
 
+import com.example.pathfinder.services.RouteService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/routes")
 public class RouteController {
 
-    @GetMapping("/all")
-    public String allRoutes() {
+    private final RouteService routeService;
+
+    public RouteController(RouteService routeService) {
+        this.routeService = routeService;
+    }
+
+    @GetMapping
+    public String routes(Model model) {
+        model.addAttribute("routes", this.routeService.findAllRoutes());
         return "routes";
+    }
+
+    @GetMapping("/details/{id}")
+    public String route(@PathVariable Long id, Model model) {
+        model.addAttribute("route", routeService.findRouteById(id));
+        return "route-details";
     }
 }

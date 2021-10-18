@@ -30,10 +30,10 @@ public class Route {
     @Column(columnDefinition = "TEXT")
     private String videoUrl;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Category> categories;
 
-    @OneToMany(mappedBy = "route")
+    @OneToMany(mappedBy = "route", fetch = FetchType.EAGER)
     private Set<Picture> pictures;
 
     public Set<Picture> getPictures() {
