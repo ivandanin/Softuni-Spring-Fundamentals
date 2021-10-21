@@ -11,18 +11,20 @@
             <div class="justify-content-center">
                 <h1>Add Employee</h1>
             </div>
-            <form class="m-md-auto w-50 text-center">
+            <form th:object="${addEmployeeBindingModel}"
+                  th:action="@{/employees/add}"
+                  th:method="post">
 
                 <div class="form-group">
                     <label for="firstName">First Name</label>
-                    <input type="text" class="form-control text-center" id="firstName" aria-describedby="firstName" name="firstName" />
-                    <small>Error message</small>
+                    <input th:field="*{firstName}" type="text" class="form-control text-center" id="firstName" aria-describedby="firstName" name="firstName" />
+                    <small th:if="${#fields.hasErrors('firstName')}">Error message</small>
                 </div>
 
                 <div class="form-group">
                     <label for="lastName">Last Name</label>
-                    <input type="text" class="form-control text-center" id="lastName" aria-describedby="lastName" name="lastName"/>
-                    <small>Error message</small>
+                    <input th:field="*{lastName}" type="text" class="form-control text-center" id="lastName" aria-describedby="lastName" name="lastName"/>
+                    <small th:if="${#fields.hasErrors('lastName')}">Error message</small>
                 </div>
                 <fieldset class="form-group">
                     <legend>Choose Education Level</legend>
@@ -44,36 +46,36 @@
                             <span>Secondary</span>
                         </label>
                     </div>
-                    <small>Error message</small>
+                    <small th:if="${#fields.hasErrors('educationLevel')}">Error message</small>
 					</fieldset>
 
                 <div class="form-group">
                     <label for="company"><h5>All available companies</h5></label>
-                    <select multiple="false" class="form-control text-center" id="company" name="company">
-                        <option> First Company name</option>
+                    <select th:field="*{company}" multiple="false" class="form-control text-center" id="company" name="company">
+                        <option th:each="c : ${companies}" th:value="${c.name}" th:text="${c.name}"> First Company name</option>
                         <option> Second Company name</option>
                         <option> Third Company name</option>
                     </select>
-                    <small>Error message</small>
+                    <small th:if="${#fields.hasErrors('company')}">Error message</small>
 				</div>
 
                 <div class="form-group">
                     <label for="jobTitle">Job Title</label>
-                    <input type="text" class="form-control text-center" id="jobTitle" aria-describedby="jobTitle" name="jobTitle" />
-                    <small>Error message</small>
+                    <input type="text" class="form-control text-center" id="jobTitle" aria-describedby="jobTitle" name="jobTitle"  />
+                    <small >Error message</small>
                 </div>
 
                 <div class="form-group">
                     <label for="birthDate">Birth Date</label>
-                    <input type="date" class="form-control text-center" id="birthDate" aria-describedby="birthDate" name="birthDate" />
-                    <small>Error message</small>
+                    <input th:field="*{birthday}" type="date" class="form-control text-center" id="birthDate" aria-describedby="birthDate" name="birthDate" />
+                    <small th:if="${#fields.hasErrors('birthday')}">Error message</small>
                 </div>
 
                 <div class="form-group">
                     <label for="salary">Salary</label>
-                    <input type="number" min="0" class="form-control text-center" id="salary" 
+                    <input th:field="*{salary}" type="number" min="0" class="form-control text-center" id="salary"
 					aria-describedby="salary" name="salary"/>
-                    <small>Error message</small>
+                    <small th:if="${#fields.hasErrors('salary')}">Error message</small>
                 </div>
 
                 <button type="submit" class="btn btn-secondary">Add Employee</button>

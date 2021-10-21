@@ -2,16 +2,15 @@ package com.example.linkedout.web;
 
 import com.example.linkedout.models.bindingModels.AddCompanyBindingModel;
 import com.example.linkedout.models.serviceModels.CompanyServiceModel;
+import com.example.linkedout.models.viewModels.CompanyDetailsViewModel;
 import com.example.linkedout.models.viewModels.CompanyViewModel;
 import com.example.linkedout.services.CompanyService;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 
@@ -28,19 +27,18 @@ public class CompanyController {
     private final CompanyService companyService;
     private final ModelMapper modelMapper;
 
+    @Autowired
     public CompanyController(CompanyService companyService, ModelMapper modelMapper) {
         this.companyService = companyService;
         this.modelMapper = modelMapper;
     }
 
-    @ModelAttribute
-    public AddCompanyBindingModel addCompanyBindingModel() {
-        return new AddCompanyBindingModel();
-    }
-
     @GetMapping("/add")
     public String addCompany(Model model) {
-        model.addAttribute("exists", true);
+        if (!model.containsAttribute("addCompanyBindingModel")) {
+            model.addAttribute("addCompanyBindingModel", new AddCompanyBindingModel());
+            model.addAttribute("doesExist", true);
+        }
         return "company-add";
     }
 
@@ -78,5 +76,11 @@ public class CompanyController {
                 modelMapper.map(companyServiceModel, CompanyViewModel.class))
         .collect(Collectors.toList()));
         return "company-all";
+    }
+
+    @GetMapping("/details/{id}")
+    public String details(@PathVariable String id, Model model) {
+        model.addAttribute("company", modelMapper.map(companyService.findById(id), CompanyDetailsViewModel.class));
+        return "company-details";
     }
 }

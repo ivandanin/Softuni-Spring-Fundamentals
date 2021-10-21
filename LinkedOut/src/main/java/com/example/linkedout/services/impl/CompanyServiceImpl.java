@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 public class CompanyServiceImpl implements CompanyService {
@@ -36,5 +36,15 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public List<Company> findAll() {
         return new ArrayList<>(companyRepo.findAll());
+    }
+
+    @Override
+    public CompanyServiceModel findById(String id) {
+                return modelMapper.map(companyRepo.findById(id).get(), CompanyServiceModel.class);
+    }
+
+    @Override
+    public CompanyServiceModel getByName(String name) {
+        return modelMapper.map(companyRepo.findByName(name).get(), CompanyServiceModel.class);
     }
 }

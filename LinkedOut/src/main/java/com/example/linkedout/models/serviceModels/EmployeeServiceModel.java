@@ -1,14 +1,11 @@
-package com.example.linkedout.models.bindingModels;
+package com.example.linkedout.models.serviceModels;
 
-import com.example.linkedout.models.entityModels.Company;
 import com.example.linkedout.models.entityModels.enums.EducationalLevelEnum;
-import com.example.linkedout.models.serviceModels.CompanyServiceModel;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class AddEmployeeBindingModel {
-
+public class EmployeeServiceModel {
     private String id;
     private LocalDate birthday;
     private EducationalLevelEnum educationLevel;
@@ -16,16 +13,16 @@ public class AddEmployeeBindingModel {
     private String jobTitle;
     private String lastName;
     private BigDecimal salary;
-    private Company company;
+    private CompanyServiceModel company;
 
-    public AddEmployeeBindingModel() {
+    public EmployeeServiceModel() {
     }
 
     public String getId() {
         return id;
     }
 
-    public AddEmployeeBindingModel setId(String id) {
+    public EmployeeServiceModel setId(String id) {
         this.id = id;
         return this;
     }
@@ -34,7 +31,7 @@ public class AddEmployeeBindingModel {
         return birthday;
     }
 
-    public AddEmployeeBindingModel setBirthday(LocalDate birthday) {
+    public EmployeeServiceModel setBirthday(LocalDate birthday) {
         this.birthday = birthday;
         return this;
     }
@@ -43,7 +40,7 @@ public class AddEmployeeBindingModel {
         return educationLevel;
     }
 
-    public AddEmployeeBindingModel setEducationLevel(EducationalLevelEnum educationLevel) {
+    public EmployeeServiceModel setEducationLevel(EducationalLevelEnum educationLevel) {
         this.educationLevel = educationLevel;
         return this;
     }
@@ -52,7 +49,7 @@ public class AddEmployeeBindingModel {
         return firstName;
     }
 
-    public AddEmployeeBindingModel setFirstName(String firstName) {
+    public EmployeeServiceModel setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
@@ -61,7 +58,7 @@ public class AddEmployeeBindingModel {
         return jobTitle;
     }
 
-    public AddEmployeeBindingModel setJobTitle(String jobTitle) {
+    public EmployeeServiceModel setJobTitle(String jobTitle) {
         this.jobTitle = jobTitle;
         return this;
     }
@@ -70,7 +67,7 @@ public class AddEmployeeBindingModel {
         return lastName;
     }
 
-    public AddEmployeeBindingModel setLastName(String lastName) {
+    public EmployeeServiceModel setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
@@ -79,16 +76,16 @@ public class AddEmployeeBindingModel {
         return salary;
     }
 
-    public AddEmployeeBindingModel setSalary(BigDecimal salary) {
+    public EmployeeServiceModel setSalary(BigDecimal salary) {
         this.salary = salary;
         return this;
     }
 
-    public Company getCompany() {
+    public CompanyServiceModel getCompany() {
         return company;
     }
 
-    public AddEmployeeBindingModel setCompany(Company company) {
+    public EmployeeServiceModel setCompany(CompanyServiceModel company) {
         this.company = company;
         return this;
     }
