@@ -4,9 +4,10 @@ import java.math.BigDecimal;
 
 public class CompanyServiceModel {
 
-    private String name;
+    private Long id;
     private BigDecimal budget;
     private String description;
+    private String name;
     private String town;
 
     public String getName() {
@@ -15,6 +16,15 @@ public class CompanyServiceModel {
 
     public CompanyServiceModel setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public CompanyServiceModel setId(Long id) {
+        this.id = id;
         return this;
     }
 

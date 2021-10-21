@@ -6,40 +6,49 @@
 <header th:replace="fragments/commons :: navbar"></header>
 <div class="row">
     <div class="col-md-2"></div>
-    <main th:object="${addCompanyBindingModel}"
-          th:action="@{/companies/add}"
-          th:method="post"
+    <main
           class="jumbotron text-center rounded col-md-8 align-self-center">
         <div class="justify-content-center">
             <h1>Add Company</h1>
         </div>
-        <form class="m-md-auto w-50 text-center">
-            <div th:field="*{name}" class="form-group">
+        <form class="m-md-auto w-50 text-center"
+              th:object="${addCompanyBindingModel}"
+              th:action="@{/companies/add}"
+              th:method="post">
+            <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control text-center" id="name" aria-describedby="nameHelp"
+                <input th:field="*{name}"
+                       required minlength="2" maxlength="10"
+                       type="text" class="form-control text-center" id="name" aria-describedby="nameHelp"
 				name="name"/>
-                <small th:if="${false}" class="errors alert alert-danger">Error message</small>
+                <small th:if="${#fields.hasErrors('name')}" class="errors alert alert-danger"></small>
             </div>
 
-            <div th:field="*{town}" class="form-group">
+            <div class="form-group">
                 <label for="town">Town</label>
-                <input type="text" class="form-control text-center" id="town" aria-describedby="town" 
+                <input th:field="*{town}"
+                       required minlength="2" maxlength="10"
+                       type="text" class="form-control text-center" id="town" aria-describedby="town"
 				name="town"/>
-                <small th:if="${false}" class="errors alert alert-danger">Error message</small>
+                <small th:if="${#fields.hasErrors('town')}" class="errors alert alert-danger">Town length must be between 2 and 10</small>
             </div>
 
-            <div th:field="*{description}"class="form-group">
+            <div class="form-group">
                 <label for="description">Description</label>
-                <input type="text" class="form-control text-center" 
+                <input th:field="*{description}"
+                       required minlength="10"
+                       type="text" class="form-control text-center"
 				id="description" aria-describedby="description" name="description"/>
-                <small th:if="${false}" class="errors alert alert-danger">Error message</small>
+                <small th:if="${#fields.hasErrors('description')}" class="errors alert alert-danger">Description must be more than 10</small>
             </div>
 
-            <div th:field="*{budget}" class="form-group">
+            <div class="form-group">
                 <label for="budget">Budget</label>
-                <input type="number" min="0" class="form-control text-center" 
-				id="budget" aria-describedby="town" name="town"/>
-                <small th:if="${false}">Budget</small>
+                <input th:field="*{budget}"
+                       required min="1"
+                       type="number" class="form-control text-center"
+                       id="budget" aria-describedby="town" name="town"/>
+                <small th:if="${#fields.hasErrors('budget')}">Budget must be positive</small>
             </div>
 
             <button type="submit" class="btn btn-secondary">Add Company</button>

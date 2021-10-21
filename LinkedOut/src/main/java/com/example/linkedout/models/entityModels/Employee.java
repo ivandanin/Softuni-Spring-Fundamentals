@@ -20,18 +20,15 @@ public class Employee {
     private String educationLevel;
 
     @Column(nullable = false)
-    @Size(min = 2)
     private String firstName;
 
     @Column(nullable = false)
     private String jobTitle;
 
     @Column(nullable = false)
-    @Size(min = 2)
     private String lastName;
 
     @Column(nullable = false)
-    @Size(min = 0)
     private BigDecimal salary;
 
     @OneToOne

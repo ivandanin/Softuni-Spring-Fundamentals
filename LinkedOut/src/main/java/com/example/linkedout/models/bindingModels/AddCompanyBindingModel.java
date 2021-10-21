@@ -5,9 +5,9 @@ import java.math.BigDecimal;
 public class AddCompanyBindingModel {
 
     private String name;
-    private BigDecimal budget;
-    private String description;
     private String town;
+    private String description;
+    private BigDecimal budget;
 
     public String getName() {
         return name;

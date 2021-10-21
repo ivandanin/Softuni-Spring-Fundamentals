@@ -10,6 +10,5 @@ import java.util.Optional;
 @Repository
 public interface CompanyRepo extends JpaRepository<Company, String> {
 
-    @Query("SELECT c.name FROM Company AS c")
     Optional<Company> findByName(String name);
 }

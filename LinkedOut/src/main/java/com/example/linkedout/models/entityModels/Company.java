@@ -1,6 +1,7 @@
 package com.example.linkedout.models.entityModels;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.Set;
@@ -11,32 +12,28 @@ public class Company {
 
     @Id
     @GeneratedValue
-    private String id;
+    private Long id;
 
     @Column(nullable = false)
-    @Size(min = 0)
     private BigDecimal budget;
 
     @Column(columnDefinition = "LONGTEXT")
-    @Size(min = 10)
     private String description;
 
     @Column(unique = true, nullable = false)
-    @Size(min = 2, max = 10)
     private String name;
 
     @Column(nullable = false)
-    @Size(min = 2, max = 10)
     private String town;
 
     @OneToMany
     private Set<Employee> employees;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public Company setId(String id) {
+    public Company setId(Long id) {
         this.id = id;
         return this;
     }
