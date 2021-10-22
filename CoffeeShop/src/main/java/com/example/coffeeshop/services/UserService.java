@@ -1,5 +1,6 @@
 package com.example.coffeeshop.services;
 
+import com.example.coffeeshop.models.entityModels.User;
 import com.example.coffeeshop.models.serviceModels.LoginServiceModel;
 import com.example.coffeeshop.models.serviceModels.RegisterServiceModel;
 
@@ -11,4 +12,6 @@ public interface UserService {
     boolean register(RegisterServiceModel registerServiceModel);
 
     void logout();
+
+    User findById(Long id);
 }

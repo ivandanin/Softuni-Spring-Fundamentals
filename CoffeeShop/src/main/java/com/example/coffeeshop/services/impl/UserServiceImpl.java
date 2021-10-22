@@ -52,4 +52,9 @@ public class UserServiceImpl implements UserService {
     public void logout() {
         currentUser.setUsername(null).setId(null);
     }
+
+    @Override
+    public User findById(Long id) {
+        return userRepo.findById(id).orElse(null);
+    }
 }
