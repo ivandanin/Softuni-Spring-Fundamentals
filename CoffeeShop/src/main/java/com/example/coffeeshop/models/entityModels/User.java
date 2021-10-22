@@ -1,6 +1,7 @@
 package com.example.coffeeshop.models.entityModels;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 
 @Entity
 @Table(name = "users")
@@ -17,6 +18,7 @@ public class User {
     private String password;
 
     @Column(unique = true)
+    @Email
     private String email;
 
     public Long getId() {

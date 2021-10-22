@@ -31,6 +31,9 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login(Model model) {
+        if (model.containsAttribute("isNotFound")) {
+            model.addAttribute("isNotFound", true);
+        }
         return "login";
     }
     @PostMapping("/login")

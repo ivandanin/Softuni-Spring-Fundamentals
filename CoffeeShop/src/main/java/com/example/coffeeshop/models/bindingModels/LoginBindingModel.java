@@ -1,7 +1,11 @@
 package com.example.coffeeshop.models.bindingModels;
 
+import javax.validation.constraints.Size;
+
 public class LoginBindingModel {
 
+
+    @Size(min = 5, max = 20,message = "Username length must be between 5 and 20 characters.")
     private String username;
     private String password;
 

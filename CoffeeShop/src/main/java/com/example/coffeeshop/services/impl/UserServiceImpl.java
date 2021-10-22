@@ -1,6 +1,8 @@
 package com.example.coffeeshop.services.impl;
 
+import com.example.coffeeshop.models.entityModels.User;
 import com.example.coffeeshop.models.serviceModels.LoginServiceModel;
+import com.example.coffeeshop.models.serviceModels.RegisterServiceModel;
 import com.example.coffeeshop.repositories.UserRepo;
 import com.example.coffeeshop.services.UserService;
 import com.example.coffeeshop.util.CurrentUser;
@@ -31,5 +33,23 @@ public class UserServiceImpl implements UserService {
     public void loginUser(LoginServiceModel loginServiceModel) {
         currentUser.setId(loginServiceModel.getId())
                 .setUsername(loginServiceModel.getUsername());
+    }
+
+    @Override
+    public boolean register(RegisterServiceModel registerServiceModel) {
+        User user = modelMapper.map(registerServiceModel, User.class);
+
+        try {
+            userRepo.save(user);
+
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void logout() {
+        currentUser.setUsername(null).setId(null);
     }
 }
