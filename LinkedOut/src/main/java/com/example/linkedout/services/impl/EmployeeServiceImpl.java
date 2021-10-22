@@ -1,5 +1,6 @@
 package com.example.linkedout.services.impl;
 
+import com.example.linkedout.models.bindingModels.AddEmployeeBindingModel;
 import com.example.linkedout.models.entityModels.Employee;
 import com.example.linkedout.models.serviceModels.CompanyServiceModel;
 import com.example.linkedout.models.serviceModels.EmployeeServiceModel;
@@ -32,5 +33,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = modelMapper.map(employeeServiceModel, Employee.class);
         employeeRepo.save(employee);
 
+    }
+
+    @Override
+    public void save(AddEmployeeBindingModel addEmployeeBindingModel) {
+        Employee employee = modelMapper.map(addEmployeeBindingModel, Employee.class);
+        employeeRepo.save(employee);
     }
 }

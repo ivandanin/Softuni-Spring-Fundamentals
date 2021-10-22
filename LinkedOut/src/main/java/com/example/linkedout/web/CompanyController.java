@@ -43,7 +43,7 @@ public class CompanyController {
     }
 
     @PostMapping("/add")
-    public String addCompany(@Valid AddCompanyBindingModel addCompanyBindingModel,
+    public String addCompany(@Valid @ModelAttribute("addCompanyBindingModel") AddCompanyBindingModel addCompanyBindingModel,
                              BindingResult bindingResult,
                              RedirectAttributes redirectAttributes,
                              HttpSession httpSession) {
@@ -52,7 +52,7 @@ public class CompanyController {
             redirectAttributes.addFlashAttribute("addCompanyBindingModel", addCompanyBindingModel)
                     .addFlashAttribute("org.springframework.validation.BindingResult.addCompanyBindingModel", bindingResult);
 
-            return "redirect:add";
+            return "redirect:/add";
         }
 
         boolean doesExist = companyService.addCompany(modelMapper.map(addCompanyBindingModel, CompanyServiceModel.class));

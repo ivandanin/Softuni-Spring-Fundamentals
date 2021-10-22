@@ -63,12 +63,12 @@ public class EmployeeController {
                       RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("addEmployeeBindingModel", addEmployeeBindingModel)
-                    .addFlashAttribute("org.springframework.validation.BindingResult.addEmployeeBindingModel", bindingResult);
+            redirectAttributes.addFlashAttribute("addEmployeeBindingModel", addEmployeeBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.addEmployeeBindingModel", bindingResult);
             return "redirect:add";
         }
 
-        employeeService.addEmployee(modelMapper.map(addEmployeeBindingModel, EmployeeServiceModel.class));
+        this.employeeService.save(addEmployeeBindingModel);
 
         return "redirect:/";
     }
