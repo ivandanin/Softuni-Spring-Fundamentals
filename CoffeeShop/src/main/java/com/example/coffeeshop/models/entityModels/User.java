@@ -2,6 +2,7 @@ package com.example.coffeeshop.models.entityModels;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -16,6 +17,9 @@ public class User {
     private String firstName;
     private String lastName;
     private String password;
+
+    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
+    private Set<Order> orders;
 
     @Column(unique = true)
     @Email
@@ -72,6 +76,15 @@ public class User {
 
     public User setEmail(String email) {
         this.email = email;
+        return this;
+    }
+
+    public Set<Order> getOrders() {
+        return orders;
+    }
+
+    public User setOrders(Set<Order> orders) {
+        this.orders = orders;
         return this;
     }
 }

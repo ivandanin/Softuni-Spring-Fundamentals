@@ -1,7 +1,7 @@
 package com.example.coffeeshop.web;
 
 import com.example.coffeeshop.models.bindingModels.LoginBindingModel;
-import com.example.coffeeshop.models.serviceModels.LoginServiceModel;
+import com.example.coffeeshop.models.serviceModels.UserServiceModel;
 import com.example.coffeeshop.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,7 +48,7 @@ public class LoginController {
             return "redirect:login";
         }
 
-        LoginServiceModel loginServiceModel = userService
+        UserServiceModel loginServiceModel = userService
                 .findByUsernameAndPassword(loginBindingModel.getUsername(), loginBindingModel.getPassword());
 
         if (loginServiceModel == null) {

@@ -1,13 +1,16 @@
 package com.example.coffeeshop.services.impl;
 
 import com.example.coffeeshop.models.entityModels.User;
-import com.example.coffeeshop.models.serviceModels.LoginServiceModel;
-import com.example.coffeeshop.models.serviceModels.RegisterServiceModel;
+import com.example.coffeeshop.models.serviceModels.UserServiceModel;
+import com.example.coffeeshop.models.viewModels.UserViewModel;
 import com.example.coffeeshop.repositories.UserRepo;
 import com.example.coffeeshop.services.UserService;
 import com.example.coffeeshop.util.CurrentUser;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -23,20 +26,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public LoginServiceModel findByUsernameAndPassword(String username, String password) {
+    public UserServiceModel findByUsernameAndPassword(String username, String password) {
         return userRepo.findByUsernameAndPassword(username, password)
-                .map(user -> modelMapper.map(user, LoginServiceModel.class))
+                .map(user -> modelMapper.map(user, UserServiceModel.class))
                 .orElse(null);
     }
 
     @Override
-    public void loginUser(LoginServiceModel loginServiceModel) {
+    public void loginUser(UserServiceModel loginServiceModel) {
         currentUser.setId(loginServiceModel.getId())
                 .setUsername(loginServiceModel.getUsername());
     }
 
     @Override
-    public boolean register(RegisterServiceModel registerServiceModel) {
+    public boolean register(UserServiceModel registerServiceModel) {
         User user = modelMapper.map(registerServiceModel, User.class);
 
         try {
@@ -56,5 +59,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findById(Long id) {
         return userRepo.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<UserViewModel> findAllUsersAndOrderCountDescending() {
+        return userRepo.findAllByOrdersDescending()
+                .stream()
+                .map(user -> {
+                    UserViewModel userViewModel = new UserViewModel();
+                    userViewModel.setUsername(user.getUsername());
+                    userViewModel.setOrderCount(user.getOrderCount());
+                    return userViewModel;
+                }).collect(Collectors.toList());
     }
 }

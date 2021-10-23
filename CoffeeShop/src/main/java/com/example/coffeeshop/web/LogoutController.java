@@ -1,4 +1,4 @@
-package com.example.coffeeshop.models.serviceModels;
+package com.example.coffeeshop.web;
 
 import com.example.coffeeshop.services.UserService;
 import org.springframework.stereotype.Controller;

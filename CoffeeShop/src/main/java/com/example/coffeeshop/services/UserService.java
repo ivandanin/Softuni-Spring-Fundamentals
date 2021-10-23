@@ -1,17 +1,21 @@
 package com.example.coffeeshop.services;
 
 import com.example.coffeeshop.models.entityModels.User;
-import com.example.coffeeshop.models.serviceModels.LoginServiceModel;
-import com.example.coffeeshop.models.serviceModels.RegisterServiceModel;
+import com.example.coffeeshop.models.serviceModels.UserServiceModel;
+import com.example.coffeeshop.models.viewModels.UserViewModel;
+
+import java.util.List;
 
 public interface UserService {
-    LoginServiceModel findByUsernameAndPassword(String username, String password);
+    UserServiceModel findByUsernameAndPassword(String username, String password);
 
-    void loginUser(LoginServiceModel loginServiceModel);
+    void loginUser(UserServiceModel loginServiceModel);
 
-    boolean register(RegisterServiceModel registerServiceModel);
+    boolean register(UserServiceModel registerServiceModel);
 
     void logout();
 
     User findById(Long id);
+
+    List<UserViewModel> findAllUsersAndOrderCountDescending();
 }

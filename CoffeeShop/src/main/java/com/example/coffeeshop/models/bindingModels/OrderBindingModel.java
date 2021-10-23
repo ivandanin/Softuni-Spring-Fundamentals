@@ -1,15 +1,34 @@
 package com.example.coffeeshop.models.bindingModels;
 
 import com.example.coffeeshop.models.entityModels.enums.CategoryEnum;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class OrderBindingModel {
 
+    @NotBlank
+    @Size(min = 3, max = 20, message = "Name must be between 3 and 20 characters.")
     private String name;
+
+    @NotNull
+    @Positive(message = "Price must be positive")
     private BigDecimal price;
-    private Integer orderTime;
-    private String category;
+
+    @PastOrPresent(message = "Order time cannot be in the future.")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private LocalDateTime orderTime;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private CategoryEnum category;
+
+    @NotBlank
+    @Size(min = 5)
     private String description;
 
     public OrderBindingModel() {
@@ -33,20 +52,20 @@ public class OrderBindingModel {
         return this;
     }
 
-    public Integer getOrderTime() {
+    public LocalDateTime getOrderTime() {
         return orderTime;
     }
 
-    public OrderBindingModel setOrderTime(Integer orderTime) {
+    public OrderBindingModel setOrderTime(LocalDateTime orderTime) {
         this.orderTime = orderTime;
         return this;
     }
 
-    public String getCategory() {
+    public CategoryEnum getCategory() {
         return category;
     }
 
-    public OrderBindingModel setCategory(String category) {
+    public OrderBindingModel setCategory(CategoryEnum category) {
         this.category = category;
         return this;
     }

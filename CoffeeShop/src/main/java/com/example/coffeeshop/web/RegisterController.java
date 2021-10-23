@@ -1,7 +1,7 @@
 package com.example.coffeeshop.web;
 
 import com.example.coffeeshop.models.bindingModels.RegisterBindingModel;
-import com.example.coffeeshop.models.serviceModels.RegisterServiceModel;
+import com.example.coffeeshop.models.serviceModels.UserServiceModel;
 import com.example.coffeeshop.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
@@ -50,7 +50,7 @@ public class RegisterController {
             return "redirect:register";
         }
 
-        boolean isSuccessful = userService.register(modelMapper.map(registerBindingModel, RegisterServiceModel.class));
+        boolean isSuccessful = userService.register(modelMapper.map(registerBindingModel, UserServiceModel.class));
 
         if (!isSuccessful) {
             redirectAttributes.addFlashAttribute("registerBindingModel", registerBindingModel);
